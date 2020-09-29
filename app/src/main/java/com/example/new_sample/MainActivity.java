@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private char ACTION;
     private double val1 = Double.NaN;
     private double val2;
+    private String val3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +157,18 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         t2.setText((int) val1 + "%");
                     }
+                } else if(t2.getText().length() > 0){
+                    val3 = "" + val1;
+                    t1.setText(val3);
+                    ACTION = MODULUS;
+                    operation();
+                    if (t1.getText().length() > 0)
+                        if (!ifReallyDecimal()) {
+                            t2.setText(val1 + "-");
+                        } else {
+                            t2.setText((int) val1 + "-");
+                        }
+                    t1.setText(null);
                     t1.setText(null);
                 } else {
                     t2.setText("Error");
@@ -175,6 +188,17 @@ public class MainActivity extends AppCompatActivity {
                         t2.setText((int) val1 + "+");
                     }
                     t1.setText(null);
+                } else if(t2.getText().length() > 0){
+                     val3 = "" + val1;
+                     t1.setText(val3);
+                     ACTION = ADDITION;
+                     operation();
+                     if (!ifReallyDecimal()) {
+                         t2.setText(val1 + "+");
+                     } else {
+                         t2.setText((int) val1 + "+");
+                     }
+                     t1.setText(null);
                 } else {
                     t2.setText("Error");
                 }
@@ -185,6 +209,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (t1.getText().length() > 0) {
+                    ACTION = SUBTRACTION;
+                    operation();
+                    if (t1.getText().length() > 0)
+                        if (!ifReallyDecimal()) {
+                            t2.setText(val1 + "-");
+                        } else {
+                            t2.setText((int) val1 + "-");
+                        }
+                    t1.setText(null);
+                } else if(t2.getText().length() > 0){
+                    val3 = "" + val1;
+                    t1.setText(val3);
                     ACTION = SUBTRACTION;
                     operation();
                     if (t1.getText().length() > 0)
@@ -212,6 +248,18 @@ public class MainActivity extends AppCompatActivity {
                         t2.setText((int) val1 + "×");
                     }
                     t1.setText(null);
+                } else if(t2.getText().length() > 0){
+                    val3 = "" + val1;
+                    t1.setText(val3);
+                    ACTION = MULTIPLICATION;
+                    operation();
+                    if (t1.getText().length() > 0)
+                        if (!ifReallyDecimal()) {
+                            t2.setText(val1 + "-");
+                        } else {
+                            t2.setText((int) val1 + "-");
+                        }
+                    t1.setText(null);
                 } else {
                     t2.setText("Error");
                 }
@@ -229,6 +277,18 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         t2.setText(val1 + "/");
                     }
+                    t1.setText(null);
+                } else if(t2.getText().length() > 0){
+                    val3 = "" + val1;
+                    t1.setText(val3);
+                    ACTION = DIVISION;
+                    operation();
+                    if (t1.getText().length() > 0)
+                        if (!ifReallyDecimal()) {
+                            t2.setText(val1 + "-");
+                        } else {
+                            t2.setText((int) val1 + "-");
+                        }
                     t1.setText(null);
                 } else {
                     t2.setText("Error");
